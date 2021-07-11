@@ -49,7 +49,7 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - pagerduty-hsl
+    - pagerduty-hs
     - HUnit
     - tasty
     - tasty-hunit
