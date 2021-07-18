@@ -8,7 +8,6 @@ Stability   : experimental
 
 PagerDuty Event V1 interface.
 -}
-{-# LANGUAGE TemplateHaskell #-}
 
 module Network.API.PagerDuty.EventV1 (
   -- * Triggering an Event
@@ -17,15 +16,10 @@ module Network.API.PagerDuty.EventV1 (
   -- * Updating an Event
   UpdateEvent(..), UpdateEvent', UpdateType(..),
   -- * Delivering Events to PagerDuty
-  deliver, Response(..),
-  -- * Lenses and Prisms
-  _Link, _Image,
-  teServiceKey, teIncidentKey, teDescription, teDetails, teClient, teClientURL, teContexts,
-  _Acknowledge, _Resolve,
-  updateType, updateServiceKey, updateIncidentKey, updateDescription, updateDetails
+  deliver, Response(..)
   ) where
 
-import           Control.Lens           (makeLenses, makePrisms, view)
+import           Control.Lens           (view)
 import           Control.Monad.Catch    (MonadCatch (..), SomeException (..), catch)
 import           Control.Monad.IO.Class (MonadIO (..))
 import           Data.Aeson             (FromJSON (..), ToJSON (..), Value (..), encode, object, (.:), (.=))
@@ -42,8 +36,6 @@ class (ToJSON j) => EventRequest j
 data Context = Link Text (Maybe Text) -- ^ Link to a URL with an optional link description.
              | Image Text (Maybe Text) (Maybe Text) -- ^ Image URL, optional link ref, and optional alt text.
   deriving (Show, Eq)
-
-makePrisms ''Context
 
 optj :: ToJSON v => [(Text, Maybe v)] -> [Pair]
 optj = mapMaybe (fmap (uncurry (.=)) . sequenceA)
@@ -67,8 +59,6 @@ data TriggerEvent a = TriggerEvent {
   }
   deriving (Show, Eq)
 
-makeLenses ''TriggerEvent
-
 instance ToJSON a => EventRequest (TriggerEvent a)
 
 -- | A 'TriggerEvent' type that doesn't have details.
@@ -91,8 +81,6 @@ instance ToJSON a => ToJSON (TriggerEvent a) where
 -- | An event update will either acknowledge or resolve an incident.
 data UpdateType = Acknowledge | Resolve deriving (Show, Eq, Bounded, Enum)
 
-makePrisms ''UpdateType
-
 -- | UpdateEvent is the message for both acknowledging and resolving
 -- incidents.  This may be delivered using the 'deliver' function.
 data UpdateEvent a = UpdateEvent {
@@ -103,8 +91,6 @@ data UpdateEvent a = UpdateEvent {
   , _updateDetails     :: Maybe a
   }
   deriving (Show, Eq)
-
-makeLenses ''UpdateEvent
 
 instance ToJSON a => EventRequest (UpdateEvent a)
 
