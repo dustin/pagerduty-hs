@@ -7,7 +7,7 @@
 --   Please see the README on GitHub at
 --   <a>https://github.com/dustin/pagerduty-hs#readme</a>
 @package pagerduty-hs
-@version 0.1.0.1
+@version 0.2.0.0
 
 
 -- | PagerDuty Event V1 interface.
@@ -68,37 +68,41 @@ Failure :: Text -> Text -> Response
 
 -- | Success and incident key for further updates
 Success :: Text -> Response
-_Link :: Prism' Context (Text, Maybe Text)
-_Image :: Prism' Context (Text, Maybe Text, Maybe Text)
-teServiceKey :: forall a_aewP. Lens' (TriggerEvent a_aewP) Text
-teIncidentKey :: forall a_aewP. Lens' (TriggerEvent a_aewP) (Maybe Text)
-teDescription :: forall a_aewP. Lens' (TriggerEvent a_aewP) Text
-teDetails :: forall a_aewP a_agcZ. Lens (TriggerEvent a_aewP) (TriggerEvent a_agcZ) (Maybe a_aewP) (Maybe a_agcZ)
-teClient :: forall a_aewP. Lens' (TriggerEvent a_aewP) Text
-teClientURL :: forall a_aewP. Lens' (TriggerEvent a_aewP) Text
-teContexts :: forall a_aewP. Lens' (TriggerEvent a_aewP) [Context]
-_Acknowledge :: Prism' UpdateType ()
-_Resolve :: Prism' UpdateType ()
-updateType :: forall a_agwn. Lens' (UpdateEvent a_agwn) UpdateType
-updateServiceKey :: forall a_agwn. Lens' (UpdateEvent a_agwn) Text
-updateIncidentKey :: forall a_agwn. Lens' (UpdateEvent a_agwn) Text
-updateDescription :: forall a_agwn. Lens' (UpdateEvent a_agwn) Text
-updateDetails :: forall a_agwn a_agBK. Lens (UpdateEvent a_agwn) (UpdateEvent a_agBK) (Maybe a_agwn) (Maybe a_agBK)
+instance GHC.Classes.Eq Network.API.PagerDuty.EventV1.Context
+instance GHC.Show.Show Network.API.PagerDuty.EventV1.Context
+instance GHC.Classes.Eq a => GHC.Classes.Eq (Network.API.PagerDuty.EventV1.TriggerEvent a)
+instance GHC.Show.Show a => GHC.Show.Show (Network.API.PagerDuty.EventV1.TriggerEvent a)
+instance GHC.Enum.Enum Network.API.PagerDuty.EventV1.UpdateType
+instance GHC.Enum.Bounded Network.API.PagerDuty.EventV1.UpdateType
+instance GHC.Classes.Eq Network.API.PagerDuty.EventV1.UpdateType
+instance GHC.Show.Show Network.API.PagerDuty.EventV1.UpdateType
+instance GHC.Classes.Eq a => GHC.Classes.Eq (Network.API.PagerDuty.EventV1.UpdateEvent a)
+instance GHC.Show.Show a => GHC.Show.Show (Network.API.PagerDuty.EventV1.UpdateEvent a)
 instance GHC.Classes.Eq Network.API.PagerDuty.EventV1.Response
 instance GHC.Show.Show Network.API.PagerDuty.EventV1.Response
 instance Data.Aeson.Types.FromJSON.FromJSON Network.API.PagerDuty.EventV1.Response
 instance Data.Aeson.Types.ToJSON.ToJSON a => Network.API.PagerDuty.EventV1.EventRequest (Network.API.PagerDuty.EventV1.UpdateEvent a)
 instance Data.Aeson.Types.ToJSON.ToJSON a => Data.Aeson.Types.ToJSON.ToJSON (Network.API.PagerDuty.EventV1.UpdateEvent a)
-instance GHC.Classes.Eq a => GHC.Classes.Eq (Network.API.PagerDuty.EventV1.UpdateEvent a)
-instance GHC.Show.Show a => GHC.Show.Show (Network.API.PagerDuty.EventV1.UpdateEvent a)
-instance GHC.Enum.Enum Network.API.PagerDuty.EventV1.UpdateType
-instance GHC.Enum.Bounded Network.API.PagerDuty.EventV1.UpdateType
-instance GHC.Classes.Eq Network.API.PagerDuty.EventV1.UpdateType
-instance GHC.Show.Show Network.API.PagerDuty.EventV1.UpdateType
 instance Data.Aeson.Types.ToJSON.ToJSON a => Network.API.PagerDuty.EventV1.EventRequest (Network.API.PagerDuty.EventV1.TriggerEvent a)
 instance Data.Aeson.Types.ToJSON.ToJSON a => Data.Aeson.Types.ToJSON.ToJSON (Network.API.PagerDuty.EventV1.TriggerEvent a)
-instance GHC.Classes.Eq a => GHC.Classes.Eq (Network.API.PagerDuty.EventV1.TriggerEvent a)
-instance GHC.Show.Show a => GHC.Show.Show (Network.API.PagerDuty.EventV1.TriggerEvent a)
 instance Data.Aeson.Types.ToJSON.ToJSON Network.API.PagerDuty.EventV1.Context
-instance GHC.Classes.Eq Network.API.PagerDuty.EventV1.Context
-instance GHC.Show.Show Network.API.PagerDuty.EventV1.Context
+
+
+-- | Lenses and prisms for the PagerDuty Event V1 interface.
+module Network.API.PagerDuty.EventV1Lenses
+_Link :: Prism' Context (Text, Maybe Text)
+_Image :: Prism' Context (Text, Maybe Text, Maybe Text)
+teServiceKey :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
+teIncidentKey :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) (Maybe Text)
+teDescription :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
+teDetails :: forall a_aaPf a_alM4. Lens (TriggerEvent a_aaPf) (TriggerEvent a_alM4) (Maybe a_aaPf) (Maybe a_alM4)
+teClient :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
+teClientURL :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
+teContexts :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) [Context]
+_Acknowledge :: Prism' UpdateType ()
+_Resolve :: Prism' UpdateType ()
+updateType :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) UpdateType
+updateServiceKey :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) Text
+updateIncidentKey :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) Text
+updateDescription :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) Text
+updateDetails :: forall a_aaKV a_alSC. Lens (UpdateEvent a_aaKV) (UpdateEvent a_alSC) (Maybe a_aaKV) (Maybe a_alSC)
