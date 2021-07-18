@@ -5,8 +5,10 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           pagerduty-hs
-version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/dustin/pagerduty#readme>
+version:        0.1.0.1
+synopsis:       An interface to the PagerDuty API.
+description:    Please see the README on GitHub at <https://github.com/dustin/pagerduty-hs#readme>
+category:       API
 homepage:       https://github.com/dustin/pagerduty-hs#readme
 bug-reports:    https://github.com/dustin/pagerduty-hs/issues
 author:         Dustin Sallings
@@ -62,7 +64,7 @@ test-suite pagerduty-test
     , base >=4.7 && <5
     , exceptions
     , lens
-    , pagerduty-hsl
+    , pagerduty-hs
     , tasty
     , tasty-hunit
     , tasty-quickcheck
