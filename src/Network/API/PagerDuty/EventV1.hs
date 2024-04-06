@@ -23,7 +23,7 @@ import           Control.Lens           (view)
 import           Control.Monad.Catch    (MonadCatch (..), SomeException (..), catch)
 import           Control.Monad.IO.Class (MonadIO (..))
 import           Data.Aeson             (FromJSON (..), ToJSON (..), Value (..), encode, object, (.:), (.=))
-import           Data.Aeson.Types       (Pair, typeMismatch)
+import           Data.Aeson.Types       (Key, Pair, typeMismatch)
 import           Data.Char              (toLower)
 import           Data.Maybe             (mapMaybe)
 import           Data.Text              (Text, pack)
@@ -37,7 +37,7 @@ data Context = Link Text (Maybe Text) -- ^ Link to a URL with an optional link d
              | Image Text (Maybe Text) (Maybe Text) -- ^ Image URL, optional link ref, and optional alt text.
   deriving (Show, Eq)
 
-optj :: ToJSON v => [(Text, Maybe v)] -> [Pair]
+optj :: ToJSON v => [(Key, Maybe v)] -> [Pair]
 optj = mapMaybe (fmap (uncurry (.=)) . sequenceA)
 
 instance ToJSON Context where

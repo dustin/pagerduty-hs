@@ -1,3 +1,5 @@
 .stack-work/
-pagerduty.cabal
 *~
+.DS_Store
+.direnv/
+dist-newstyle/
