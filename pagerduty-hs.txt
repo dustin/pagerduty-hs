@@ -7,7 +7,7 @@
 --   Please see the README on GitHub at
 --   <a>https://github.com/dustin/pagerduty-hs#readme</a>
 @package pagerduty-hs
-@version 0.2.0.0
+@version 0.3.0.0
 
 
 -- | PagerDuty Event V1 interface.
@@ -92,17 +92,17 @@ instance Data.Aeson.Types.ToJSON.ToJSON Network.API.PagerDuty.EventV1.Context
 module Network.API.PagerDuty.EventV1Lenses
 _Link :: Prism' Context (Text, Maybe Text)
 _Image :: Prism' Context (Text, Maybe Text, Maybe Text)
-teServiceKey :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
-teIncidentKey :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) (Maybe Text)
-teDescription :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
-teDetails :: forall a_aaPf a_alM4. Lens (TriggerEvent a_aaPf) (TriggerEvent a_alM4) (Maybe a_aaPf) (Maybe a_alM4)
-teClient :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
-teClientURL :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) Text
-teContexts :: forall a_aaPf. Lens' (TriggerEvent a_aaPf) [Context]
+teServiceKey :: forall a_iiKf. Lens' (TriggerEvent a_iiKf) Text
+teIncidentKey :: forall a_iiKf. Lens' (TriggerEvent a_iiKf) (Maybe Text)
+teDescription :: forall a_iiKf. Lens' (TriggerEvent a_iiKf) Text
+teDetails :: forall a_iiKf a_aiKh. Lens (TriggerEvent a_iiKf) (TriggerEvent a_aiKh) (Maybe a_iiKf) (Maybe a_aiKh)
+teClient :: forall a_iiKf. Lens' (TriggerEvent a_iiKf) Text
+teClientURL :: forall a_iiKf. Lens' (TriggerEvent a_iiKf) Text
+teContexts :: forall a_iiKf. Lens' (TriggerEvent a_iiKf) [Context]
 _Acknowledge :: Prism' UpdateType ()
 _Resolve :: Prism' UpdateType ()
-updateType :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) UpdateType
-updateServiceKey :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) Text
-updateIncidentKey :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) Text
-updateDescription :: forall a_aaKV. Lens' (UpdateEvent a_aaKV) Text
-updateDetails :: forall a_aaKV a_alSC. Lens (UpdateEvent a_aaKV) (UpdateEvent a_alSC) (Maybe a_aaKV) (Maybe a_alSC)
+updateType :: forall a_iiRO. Lens' (UpdateEvent a_iiRO) UpdateType
+updateServiceKey :: forall a_iiRO. Lens' (UpdateEvent a_iiRO) Text
+updateIncidentKey :: forall a_iiRO. Lens' (UpdateEvent a_iiRO) Text
+updateDescription :: forall a_iiRO. Lens' (UpdateEvent a_iiRO) Text
+updateDetails :: forall a_iiRO a_aiRQ. Lens (UpdateEvent a_iiRO) (UpdateEvent a_aiRQ) (Maybe a_iiRO) (Maybe a_aiRQ)
